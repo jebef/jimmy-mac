@@ -674,7 +674,7 @@ states/Run/node = SubResource("AnimationNodeBlendSpace1D_pt3ga")
 states/Run/position = Vector2(759, 83)
 states/Start/position = Vector2(413, 83)
 transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_gjy52"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_swyt0"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_luu3c"), "Jump", "JumpLoop", SubResource("AnimationNodeStateMachineTransition_xw5e3"), "JumpLoop", "Fall", SubResource("AnimationNodeStateMachineTransition_aethl"), "Fall", "FallLoop", SubResource("AnimationNodeStateMachineTransition_3y24l"), "FallLoop", "Land", SubResource("AnimationNodeStateMachineTransition_mbtjg"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_ui2a0"), "Land", "Idle", SubResource("AnimationNodeStateMachineTransition_l6kkf"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_v2pcm")]
-graph_offset = Vector2(0, 42.7295)
+graph_offset = Vector2(0, 23.0082)
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
