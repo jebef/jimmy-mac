@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7hnp8d135vko"
-path="res://.godot/imported/jimmy_mac_sheet_horiz.png-55ea73b8145b3a4537b3114cf8692bf0.ctex"
+uid="uid://btj8uo5ykxfe2"
+path="res://.godot/imported/jm_sheet_32.png-296f9c0079ad276d5d074c39f04f33c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/jimmy_mac_sheet_horiz.png"
-dest_files=["res://.godot/imported/jimmy_mac_sheet_horiz.png-55ea73b8145b3a4537b3114cf8692bf0.ctex"]
+source_file="res://assets/jm_sheet_32.png"
+dest_files=["res://.godot/imported/jm_sheet_32.png-296f9c0079ad276d5d074c39f04f33c3.ctex"]
 
 [params]
 
