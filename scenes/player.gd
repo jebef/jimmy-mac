@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var animation_tree : AnimationTree = $AnimationTree
 
+# Global vars 
+var direction : float = 0.0
 const SPEED = 50.0
 const JUMP_VELOCITY = -350.0
 
@@ -18,16 +20,10 @@ func update_animation_parameters():
 		animation_tree["parameters/conditions/is_idle"] = false
 		animation_tree["parameters/conditions/is_moving"] = true
 	
-	var blend
-	if velocity.x < 0:
-		blend = -1
-	elif velocity.x > 0:
-		blend = 1
-	else:
-		blend = 0
-	
-	animation_tree["parameters/Idle/blend_position"] = blend
-	animation_tree["parameters/Run/blend_position"] = blend
+	# Update blend params if necessary 
+	if direction:
+		animation_tree["parameters/Idle/blend_position"] = direction
+		animation_tree["parameters/Run/blend_position"] = direction
 		
 		
 	
@@ -44,7 +40,7 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("move_left", "move_right")
+	direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
