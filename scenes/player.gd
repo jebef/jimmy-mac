@@ -1,10 +1,38 @@
 extends CharacterBody2D
 
+@onready var animation_tree : AnimationTree = $AnimationTree
 
-const SPEED = 250.0
+const SPEED = 50.0
 const JUMP_VELOCITY = -350.0
 
-
+func _ready():
+	animation_tree.active = true
+	
+# A function to update advanced conditions for our animation tree 
+func update_animation_parameters():
+	# Check if the player is moving and update params accordingly 
+	if velocity == Vector2.ZERO:
+		animation_tree["parameters/conditions/is_idle"] = true
+		animation_tree["parameters/conditions/is_moving"] = false
+	else:
+		animation_tree["parameters/conditions/is_idle"] = false
+		animation_tree["parameters/conditions/is_moving"] = true
+	
+	var blend
+	if velocity.x < 0:
+		blend = -1
+	elif velocity.x > 0:
+		blend = 1
+	else:
+		blend = 0
+	
+	animation_tree["parameters/Idle/blend_position"] = blend
+	animation_tree["parameters/Run/blend_position"] = blend
+		
+		
+	
+	
+	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -21,5 +49,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+		
+	update_animation_parameters()
 	move_and_slide()
