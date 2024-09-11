@@ -19,12 +19,16 @@ func update_animation_parameters():
 	else:
 		animation_tree["parameters/conditions/is_idle"] = false
 		animation_tree["parameters/conditions/is_moving"] = true
+		
+	animation_tree["parameters/conditions/is_attacking"] = false
+	if Input.is_action_just_pressed("attack"):
+		animation_tree["parameters/conditions/is_attacking"] = true
 	
 	# Update blend params if necessary 
 	if direction:
 		animation_tree["parameters/Idle/blend_position"] = direction
 		animation_tree["parameters/Run/blend_position"] = direction
-		
+		animation_tree["parameters/Attack/blend_position"] = direction
 		
 	
 	

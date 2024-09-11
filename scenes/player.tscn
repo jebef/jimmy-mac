@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dnb8reqaqef8a"]
+[gd_scene load_steps=29 format=3 uid="uid://dnb8reqaqef8a"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_86juh"]
 [ext_resource type="Texture2D" uid="uid://btj8uo5ykxfe2" path="res://assets/jm_sheet_32.png" id="2_lx8yx"]
@@ -222,6 +222,19 @@ _data = {
 "run_right": SubResource("Animation_qdw2u")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8yjfw"]
+animation = &"attack_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4aid0"]
+animation = &"attack_right"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_3negk"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_8yjfw")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_4aid0")
+blend_point_1/pos = 1.0
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_75otl"]
 animation = &"idle_left"
 
@@ -259,12 +272,30 @@ advance_condition = &"is_idle"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_luu3c"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bfb0e"]
+advance_mode = 2
+advance_condition = &"is_attacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_77to1"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mdrsh"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pwn5y"]
+advance_mode = 2
+advance_condition = &"is_attacking"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5afnf"]
+states/Attack/node = SubResource("AnimationNodeBlendSpace1D_3negk")
+states/Attack/position = Vector2(505, 203)
 states/Idle/node = SubResource("AnimationNodeBlendSpace1D_rb43y")
 states/Idle/position = Vector2(401, 110)
 states/Run/node = SubResource("AnimationNodeBlendSpace1D_pt3ga")
 states/Run/position = Vector2(586, 95)
-transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_gjy52"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_swyt0"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_luu3c")]
+transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_gjy52"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_swyt0"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_luu3c"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_bfb0e"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_77to1"), "Attack", "Run", SubResource("AnimationNodeStateMachineTransition_mdrsh"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_pwn5y")]
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
@@ -289,7 +320,9 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_5afnf")
 anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/is_attacking = false
 parameters/conditions/is_idle = false
 parameters/conditions/is_moving = false
+parameters/Attack/blend_position = 0
 parameters/Idle/blend_position = 0
 parameters/Run/blend_position = 0
