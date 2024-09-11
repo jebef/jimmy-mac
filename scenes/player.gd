@@ -23,16 +23,19 @@ func update_animation_parameters():
 		
 	# JUMP
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		animation_tree["parameters/conditions/is_running"] = false
 		animation_tree["parameters/conditions/is_jumping"] = true
 	else:
 		animation_tree["parameters/conditions/is_jumping"] = false
 	# LAND
 	if animation_tree["parameters/conditions/is_falling"] and is_on_floor():
+		animation_tree["parameters/conditions/is_running"] = false
 		animation_tree["parameters/conditions/is_landing"] = true 
 	else:
 		animation_tree["parameters/conditions/is_landing"] = false
 	# FALL
 	if not is_on_floor() and velocity.y >= 0.0:
+		animation_tree["parameters/conditions/is_running"] = false
 		animation_tree["parameters/conditions/is_falling"] = true 
 	else:
 		animation_tree["parameters/conditions/is_falling"] = false
