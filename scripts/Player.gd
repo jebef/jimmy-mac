@@ -6,8 +6,8 @@ extends CharacterBody2D
 
 # Global vars 
 var direction : Vector2 = Vector2.ZERO
-const SPEED = 100.0
-const JUMP_VELOCITY = -200.0
+const SPEED = 75.0
+const JUMP_VELOCITY = -300.0
 
 func _ready():
 	animation_tree.active = true
