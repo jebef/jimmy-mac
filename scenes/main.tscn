@@ -7,10 +7,11 @@
 [node name="main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_pqv4j")]
+position = Vector2(0, -61)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -46)
-zoom = Vector2(4, 4)
+zoom = Vector2(6, 6)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
