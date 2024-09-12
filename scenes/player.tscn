@@ -570,10 +570,11 @@ ground_state = NodePath("../Ground")
 land_animation_name = &"land"
 
 [node name="CharacterStateMachineLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
-offset_left = -52.0
-offset_top = -42.0
-offset_right = 50.0
-offset_bottom = -19.0
+offset_left = -39.0
+offset_top = -39.0
+offset_right = 36.0
+offset_bottom = -23.0
+theme_override_font_sizes/font_size = 11
 text = "State: "
 script = ExtResource("8_5rswf")
 state_machine = NodePath("../CharacterStateMachine")
