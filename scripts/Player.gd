@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var state_machine : CharacterStateMachine = $CharacterStateMachine
+@onready var melee_hitbox : CollisionShape2D = $Melee/MeleeHitbox
 
 # Global vars 
 var direction : Vector2 = Vector2.ZERO
@@ -38,6 +39,10 @@ func _physics_process(delta: float) -> void:
 func update_sprite_direction():
 	if direction.x < 0.0:
 		sprite.flip_h = false
+		if melee_hitbox.position.x > 0.0:
+			melee_hitbox.position.x *= -1.0
 	elif direction.x > 0.0:
 		sprite.flip_h = true 
+		if melee_hitbox.position.x < 0.0:
+			melee_hitbox.position.x *= -1.0
 	
