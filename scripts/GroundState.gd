@@ -11,8 +11,7 @@ const JUMP_VELOCITY : float = -100.0
 func state_input(event : InputEvent):
 	if event.is_action_pressed("jump"):
 		jump()
-	
-	if event.is_action_pressed("attack"):
+	elif event.is_action_pressed("melee"):
 		melee()
 		
 func state_process(delta : float) -> void:
