@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dryixv5dkhw6e"]
+
+[ext_resource type="Texture2D" uid="uid://uns4fxvxh5ut" path="res://assets/test_monster.png" id="1_3i0po"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_con44"]
+radius = 8.0
+
+[node name="Monster" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("1_3i0po")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_con44")

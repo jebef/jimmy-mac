@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5cao2577u86a"]
+[gd_scene load_steps=4 format=3 uid="uid://c5cao2577u86a"]
 
 [ext_resource type="PackedScene" uid="uid://dnb8reqaqef8a" path="res://scenes/player.tscn" id="1_pqv4j"]
+[ext_resource type="PackedScene" uid="uid://dryixv5dkhw6e" path="res://scenes/monster.tscn" id="2_0oqmj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gohmm"]
 
@@ -17,3 +18,6 @@ zoom = Vector2(4, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_gohmm")
+
+[node name="Monster" parent="." instance=ExtResource("2_0oqmj")]
+position = Vector2(-47, -7)
